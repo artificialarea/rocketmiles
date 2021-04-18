@@ -2,15 +2,12 @@ import React from 'react';
 
 export default function Filters(props) {
     const { 
-        searchHotels, 
-        sortHotels,
+        hotelSearch, 
+        hotelSort,
         onSearch,
         onSort, 
         onReset,
     } = props;
-
-    console.log('searchHotels:', searchHotels);
-    console.log('sortHotels:', sortHotels);
 
     return (
         <div className="filters">
@@ -18,19 +15,19 @@ export default function Filters(props) {
             <input 
                 type="text" 
                 className="input" 
-                value={searchHotels}
+                value={hotelSearch}
                 onChange={(e) => onSearch(e)}
             />
             Sort
             <select 
                 name="" 
                 className="select"
-                value={sortHotels} 
+                value={hotelSort} 
                 onChange={(e) => onSort(e)}
             >
                 <option value="recommended">Recommended</option>
-                <option value="low-price">Price low-to-high</option>
-                <option value="high-price">Price high-to-low</option>
+                <option value="ascending">Price low-to-high</option>
+                <option value="descending">Price high-to-low</option>
             </select>
             <button 
                 className="button"

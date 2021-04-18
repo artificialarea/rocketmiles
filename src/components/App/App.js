@@ -8,8 +8,8 @@ import HotelList from '../Hotels/HotelList';
 const App = () => {
     const [hotelMaster, setHotelMaster] = useState([]);
     const [hotelDisplay, setHotelDisplay] = useState([]);
-    const [searchHotels, setSearchHotels] = useState('');
-    const [sortHotels, setSortHotels] = useState('recommended');
+    const [hotelSearch, setHotelSearch] = useState('');
+    const [hotelSort, setHotelSort] = useState('recommended');
 
     useEffect(() => {
         hotelResultService.get().then(response => {
@@ -18,42 +18,58 @@ const App = () => {
         })
     }, []);
 
-    const filterHotels = (name) => {
-        if (name) {
-            let filteredList = hotelMaster.filter(hotel => {
-                return hotel.hotelStaticContent.name.toLowerCase().includes(name);
-            });
+    useEffect(() => {
+        let filteredList = hotelMaster.filter(hotel => {
+            return hotel.hotelStaticContent.name.toLowerCase().includes(hotelSearch);
+        });
+
+        if (hotelSearch) {
             setHotelDisplay(filteredList);
         } else {
             setHotelDisplay(hotelMaster);
         }
-    }
+
+        if (hotelSort === 'ascending') {
+            const sortedList = filteredList.sort((a, b) => {
+                return a.lowestAveragePrice.amount - b.lowestAveragePrice.amount;
+            });
+            setHotelDisplay(sortedList);
+        } else if (hotelSort === 'descending') {
+            let sortedList = filteredList.sort((a, b) => {
+                return b.lowestAveragePrice.amount - a.lowestAveragePrice.amount;
+            });
+            setHotelDisplay(sortedList);
+        } else {
+            setHotelDisplay(filteredList);
+        }
+
+       
+
+    }, [hotelSearch, hotelSort]);
 
     const handleSearch = (e) => {
         e.preventDefault();
         const { value } = e.target;
-        setSearchHotels(value);
-        filterHotels(value);
+        setHotelSearch(value);
     }
 
     const handleSort = (e) => {
         e.preventDefault();
         const { value } = e.target;
-        setSortHotels(value);
+        setHotelSort(value);
     }
 
     const handleReset = () => {
-        setSortHotels('recommended');
-        setSearchHotels('');
-        filterHotels();
+        setHotelSearch('');
+        setHotelSort('recommended');
     }
 
     return (
         <div className="app-container">
             <div className="content">
                 <Filters 
-                    searchHotels = {searchHotels}
-                    sortHotels = {sortHotels}
+                    hotelSearch = {hotelSearch}
+                    hotelSort = {hotelSort}
                     onSearch={handleSearch}
                     onSort={handleSort}
                     onReset={handleReset}
