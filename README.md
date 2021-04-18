@@ -1,7 +1,23 @@
 # Rocketmiles - React Technical Assesment
 
+_cloned from: https://github.com/rocketmiles/react-frontend-homework_ 
+
+### Sacha Sedriks: assignment checklist
+- [ ] Create Components from the root
+- [ ] Filter API results set by hotel name input field search
+- [ ] Sort the results set via dropdown by Price (in ascending and descending order), along with Recommended.
+- [ ] Add additional unit tests for core functionality
+- [ ] Handle all failed use cases, including...
+  - [ ] Hotel name not found in list
+  - [ ] No data is returned from REST endpoint
+  - [ ] _Any others?_
+- [ ] Restyle (optional, if time allows)
+
+
+<br />
+
 ## Instructions: 
-See also: instructions.pdf
+See also: instructions.pdf (v2)
 
 ## Development Frontend server
 
