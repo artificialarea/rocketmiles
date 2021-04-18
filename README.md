@@ -3,7 +3,7 @@
 _cloned from: https://github.com/rocketmiles/react-frontend-homework_ 
 
 ### Sacha Sedriks: assignment checklist
-- [ ] Create Components from the root
+- [x] Create Components from the root
 - [ ] Filter API results set by hotel name input field search
 - [ ] Sort the results set via dropdown by Price (in ascending and descending order), along with Recommended.
 - [ ] Add additional unit tests for core functionality
