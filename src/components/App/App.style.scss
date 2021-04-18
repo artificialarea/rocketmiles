@@ -124,3 +124,14 @@
         font-weight: 500;
     }
 }
+
+.error-card {
+    background: white;
+    color: red;
+    display: grid;
+    padding: 10px;
+    height: 200px;
+    border-radius: 2px;
+    overflow: hidden;
+    box-shadow: 0 2px 7px -2px rgba(0, 0, 0, 0.12);
+}

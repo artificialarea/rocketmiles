@@ -10,21 +10,34 @@ const App = () => {
     const [hotelDisplay, setHotelDisplay] = useState([]);
     const [hotelSearch, setHotelSearch] = useState('');
     const [hotelSort, setHotelSort] = useState('recommended');
+    const [error, setError] = useState({status: false});
 
     useEffect(() => {
-        hotelResultService.get().then(response => {
-            setHotelMaster(response.results.hotels);
-            setHotelDisplay(response.results.hotels);
-        })
+        hotelResultService
+            .get()
+            .then(response => {
+                setHotelMaster(response.results.hotels);
+                setHotelDisplay(response.results.hotels);
+            })
+            .catch(err => {
+                setError({
+                    status: true, 
+                    message: `Sorry, but we're experiencing some technical difficulties. Please refresh to see hotel listings.`
+                });
+            })
     }, []);
 
     useEffect(() => {
         let filteredList = hotelMaster.filter(hotel => {
             return hotel.hotelStaticContent.name.toLowerCase().includes(hotelSearch);
         });
+        setError({status: false});
 
         if (hotelSearch) {
             setHotelDisplay(filteredList);
+            if (!filteredList.length) {
+                setError({status: true, message: 'Sorry, but there are no hotels listed with that name.'});
+            }
         } else {
             setHotelDisplay(hotelMaster);
         }
@@ -64,6 +77,7 @@ const App = () => {
         setHotelSort('recommended');
     }
 
+
     return (
         <div className="app-container">
             <div className="content">
@@ -74,7 +88,10 @@ const App = () => {
                     onSort={handleSort}
                     onReset={handleReset}
                 />
-                <HotelList hotels={hotelDisplay} />
+                <HotelList 
+                    hotels={hotelDisplay} 
+                    error={error}
+                />
             </div>
         </div>
     )
