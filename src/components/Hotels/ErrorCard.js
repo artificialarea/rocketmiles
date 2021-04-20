@@ -5,7 +5,7 @@ export default function ErrorCard(props) {
 
     return (
         <div className="error-card">
-            {message}
+            <p>{message}</p>
         </div>
     )
 }

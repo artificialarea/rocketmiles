@@ -18,3 +18,8 @@ export default function HotelList(props) {
         </div>
     )
 }
+
+HotelList.defaultProps = {
+    hotels: [],
+    error: false,
+}

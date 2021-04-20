@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { mount } from 'enzyme';
 import HotelList from "./HotelList";
 
@@ -41,12 +42,22 @@ const mockHotels = [
     }
 ];
 
+const errorFalse = { status: false };
+const errorTrue = { status: true };
+
 
 describe(`HotelList component`, () => {
     
     it('renders the component', () => {
-        const wrapper = mount(<HotelList hotels={mockHotels}/>);
+        const wrapper = mount(<HotelList hotels={mockHotels} error={errorFalse} />);
         expect(wrapper.find('.hotel-list').exists()).toBe(true);
+        expect(wrapper.find('.error-card').exists()).toBe(false);
+    });
+
+    it('renders the component without data and shows error card', () => {
+        const wrapper = mount(<HotelList error={errorTrue} />);
+        expect(wrapper.find('.hotel-list').exists()).toBe(true);
+        expect(wrapper.find('.error-card').exists()).toBe(true);
     });
 
 });

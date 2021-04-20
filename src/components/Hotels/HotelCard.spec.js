@@ -22,8 +22,15 @@ const mockHotel = {
 }
 
 describe('HotelCard component', () => {
+
     it('renders the component', () => {
         const wrapper = mount(<HotelCard hotel={mockHotel}/>);
         expect(wrapper.find('.hotel-card').exists()).toBe(true);
     });
+
+    it('renders the component without data', () => {
+        const wrapper = mount(<HotelCard />);
+        expect(wrapper.find('.hotel-card').exists()).toBe(false);
+    });
+
 });

@@ -3,12 +3,17 @@ import React from 'react';
 export default function HotelCard(props) {
     const { hotel } = props;
 
+    if (!Object.keys(hotel).length) {
+        return null;
+    }
+
     return (
         <div className="hotel-card" key={hotel.id}>
             <div
                 className="image"
                 style={{ backgroundImage: `url(${hotel.hotelStaticContent.mainImage.url})`}}>
             </div>
+            
             <div className="hotel-details">
                 <div className="hotel-name">
                     {hotel.hotelStaticContent.name}
@@ -29,4 +34,8 @@ export default function HotelCard(props) {
             </div>
         </div>
     )
+}
+
+HotelCard.defaultProps = {
+    hotel: {}
 }

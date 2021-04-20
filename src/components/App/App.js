@@ -18,6 +18,7 @@ const App = () => {
             .then(response => {
                 setHotelMaster(response.results.hotels);
                 setHotelDisplay(response.results.hotels);
+                setError({status: false})
             })
             .catch(err => {
                 setError({
