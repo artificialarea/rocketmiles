@@ -10,8 +10,7 @@ export default function HotelList(props) {
             {hotels.map(hotel => (
                 <HotelCard hotel={hotel} key={hotel.id}/>
             ))}
-            {   
-                (error.status)
+            {error.status
                 ? <ErrorCard error={error}/>
                 : null
             }

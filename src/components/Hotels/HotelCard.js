@@ -11,9 +11,11 @@ export default function HotelCard(props) {
         <div className="hotel-card" key={hotel.id}>
             <div
                 className="image"
-                style={{ backgroundImage: `url(${hotel.hotelStaticContent.mainImage.url})`}}>
-            </div>
-            
+                style={{ backgroundImage: `
+                    url(${hotel.hotelStaticContent.mainImage.url}), 
+                    url(${require('../../img/img_default.png')}
+            `}}>
+            </div>           
             <div className="hotel-details">
                 <div className="hotel-name">
                     {hotel.hotelStaticContent.name}
