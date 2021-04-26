@@ -37,7 +37,7 @@ const App = () => {
         if (hotelSearch) {
             setHotelDisplay(filteredList);
             if (!filteredList.length) {
-                setError({status: true, message: 'Sorry, but there are no hotels listed with that name.'});
+                setError({status: true, message: 'No hotels listed under that name.'});
             }
         } else {
             setHotelDisplay(hotelMaster);

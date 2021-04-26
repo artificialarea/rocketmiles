@@ -10,6 +10,7 @@ _cloned from: https://github.com/rocketmiles/react-frontend-homework_
 - [ ] Handle all failed use cases, including...
   - [x] Hotel name not found in list
   - [x] No data is returned from REST endpoint
+  - [x] When hotel image url GET response 404 or 500, display default image placeholder
   - [ ] _Any others?_
 - [ ] Restyle (optional, if time allows)
 
