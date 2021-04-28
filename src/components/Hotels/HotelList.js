@@ -7,6 +7,7 @@ export default function HotelList(props) {
 
     return (
         <div className="hotel-list">
+            <h2 class="visuallyhidden">Hotels</h2>
             {hotels.map(hotel => (
                 <HotelCard hotel={hotel} key={hotel.id}/>
             ))}

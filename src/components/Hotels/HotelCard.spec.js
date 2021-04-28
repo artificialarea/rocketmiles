@@ -30,7 +30,7 @@ describe('HotelCard component', () => {
 
     it('renders the component without data', () => {
         const wrapper = mount(<HotelCard />);
-        expect(wrapper.find('.hotel-card').exists()).toBe(false);
+        expect(wrapper.find('.hotel-card').exists()).toBe(true);
     });
 
 });

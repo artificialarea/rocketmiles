@@ -1,8 +1,8 @@
 .content {
     display: grid;
-    grid-template-columns: 20% 75%;
+    grid-template-columns: auto-fit;
     grid-column-gap: 20px;
-    padding: 10px;
+    padding: 20px;
     margin: 0 auto;
     max-width: 1200px;
     background: #DCDCDC;
@@ -10,10 +10,13 @@
 
 .filters {
     background-color: white;
+    font-size: 0.8rem;
     padding: 10px;
     height: fit-content;
+    height: -moz-max-content;
     border-radius: 2px;
     box-shadow: 0 2px 7px -2px rgba(0, 0, 0, 0.12);
+    margin-bottom: 20px;
 
     .input {
         padding: 0.5rem 1rem;
@@ -22,9 +25,9 @@
         border-radius: 2px;
         border: 1px solid #dcdcdc;
         margin-bottom: 10px;
-        font-family: system;
+        font-family: 'Roboto Slab';
         font-weight: 500;
-        outline: 0;
+        outline: none;
         background: white;
         display: inline-block;
     }
@@ -32,12 +35,13 @@
     .button {
         width: 100%;
         font-size: 0.8rem;
-        border: none;
+        border: 1px solid #6d6d6d;
         outline: none;
         background: #6d6d6d;
         color: white;
         cursor: pointer;
         padding: 10px;
+        font-family: 'Roboto Slab';
         font-weight: bold;
         border-radius: 2px;
     }
@@ -50,11 +54,34 @@
         border-radius: 2px;
         border: 1px solid #dcdcdc;
         margin-bottom: 10px;
-        font-family: system;
+        font-family: 'Roboto Slab';
         font-weight: 500;
-        outline: 0;
+        outline: none;
         background: white;
         display: block;
+    }
+
+    .input:focus,
+    .select:focus {
+        background-color: rgba(170, 170, 170, 0.05);
+        border: 1px solid #3fa510;
+    }
+
+    .button:focus,
+    .button:hover {
+        border: 1px solid #3fa510;
+        background: #2b2b2b;
+    }
+
+    .filters-label {
+        display:inline-block;
+        font-size: 0.7rem;
+        color: #666;
+        padding: 0 0 8px 0;
+    }
+
+    .filters-label:focus-within {
+        color: 1px solid #3fa510;
     }
 }
 
@@ -68,16 +95,17 @@
 .hotel-card {
     background: white;
     display: grid;
-    grid-template-columns: 180px 1fr 20%;
     border-radius: 2px;
     overflow: hidden;
     box-shadow: 0 2px 7px -2px rgba(0, 0, 0, 0.12);
 
     .image {
-        min-width: 180px;
-        height: 180px;
+        grid-row-start: 1;
+        grid-row-end: 3;
+        height: 200px;
         background-size: cover;
         background-color: rgba(0, 0, 0, 0.05);
+        background-position: 50% 50%;
     }
 
     .hotel-details {
@@ -99,14 +127,15 @@
     .price-details {
         padding: 10px;
         display: flex;
-        justify-content: space-between;
-        flex-direction: column;
-        border-left: 1px solid #DCDCDC;
+        flex-wrap: wrap;
+        flex-direction: row;
     }
 
     .price {
         font-weight: 500;
         color: #6DBA4A;
+        margin-right: 10px;
+        padding-bottom: 10px;
     }
 
     .rewards {
@@ -117,11 +146,17 @@
         background-color: #6DBA4A;
         color: white;
         font-size: 1rem;
+        font-family: 'Roboto Slab';
         border-radius: 3px;
         outline: none;
         width: 100%;
         padding: 10px;
         font-weight: 500;
+    }
+
+    .button:focus,
+    .button:hover {
+        background-color: #3fa510;
     }
 }
 
@@ -135,3 +170,106 @@
     overflow: hidden;
     box-shadow: 0 2px 7px -2px rgba(0, 0, 0, 0.12);
 }
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+}
+
+
+@media only screen and (min-width: 640px) {
+    .hotel-card {
+        display: grid;
+        grid-template-columns: 180px 1fr 20%;
+        overflow: hidden;
+    
+        .image {
+            grid-row-start: 1;
+            grid-row-end: 1;
+            height: 180px;
+            background-size: cover;
+            background-color: rgba(0, 0, 0, 0.05);
+            background-position: 50% 50%;
+        }
+    
+        .price-details {
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            border-left: 1px solid #DCDCDC;
+        }
+    }
+}
+
+
+@media only screen and (min-width: 768px) {
+
+    .content {
+        grid-template-columns: 1fr 3fr;
+    }
+
+    .hotel-card {
+        display: grid;
+        grid-template-columns: 180px 1fr 20%;
+        overflow: hidden;
+    
+        .image {
+            grid-row-start: 1;
+            grid-row-end: 1;
+            height: 180px;
+            background-size: cover;
+            background-color: rgba(0, 0, 0, 0.05);
+            background-position: 50% 50%;
+        }
+    
+        .price-details {
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            border-left: 1px solid #DCDCDC;
+        }
+    }
+}
+
+
+/* RESPONSIVE DESIGN TEMP BORDER GUIDE ///////////////////////*/
+
+// @media only screen and (min-width: 320px) {
+//     body { border: 3px solid purple; }
+// }
+// @media only screen and (min-width: 480px) {
+//     body { border: 3px solid green; }
+// }
+// @media only screen and (min-width: 640px) {
+//     body { border: 3px solid brown; }
+// }
+// @media screen and (min-width: 768px) {
+//     body { border: 3px solid red; }
+// }
+// @media screen and (min-width: 1024px) { 
+//     body { border: 3px solid blue; }
+// }
+  
+// @media screen and (min-width: 1280px) {
+//     body { border: 3px solid aqua; }
+// }
+// @media only screen and (min-width: 1600px) {
+//     body { border: 3px solid yellow; }
+// }

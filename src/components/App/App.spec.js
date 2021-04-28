@@ -55,7 +55,6 @@ describe('HotelCard component via App', () => {
     })
 
     it('should render fetched api data', async () => {
-        console.log(mockHotel)
         jest.spyOn(global, 'fetch').mockImplementation(() => {
             Promise.resolve({
                 json: () => Promise.resolve(mockHotel)
@@ -65,7 +64,7 @@ describe('HotelCard component via App', () => {
         await act(async () => {
             render(<HotelCard hotel={mockHotel}/>, container);
         });
-
+        
         expect(container.querySelector('.image')).toHaveStyle(`background-image: url(${mockHotel.hotelStaticContent.mainImage.url})`);
         expect(container.querySelector('.hotel-name').textContent).toBe(mockHotel.hotelStaticContent.name);
         expect(container.querySelector('.location').textContent).toBe(mockHotel.hotelStaticContent.neighborhoodName);

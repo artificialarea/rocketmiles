@@ -7,12 +7,15 @@ _cloned from: https://github.com/rocketmiles/react-frontend-homework_
 - [x] Filter API results set by hotel name input field search
 - [x] Sort the results set via dropdown by Price (in ascending and descending order), along with Recommended.
 - [ ] Add additional unit tests for core functionality
-- [ ] Handle all failed use cases, including...
+    - [x] Happy paths only
+    - [ ] _Other testing types outside my depth of knowledge_
+- [x] Handle all failed use cases, including...
   - [x] Hotel name not found in list
   - [x] No data is returned from REST endpoint
-  - [x] When hotel image url GET response 404 or 500, display default image placeholder
-  - [ ] _Any others?_
-- [ ] Restyle (optional, if time allows)
+  - [x] Display fallback default image when hotel image url GET response 404 or 500.
+- [ ] Restyle (optional, if time allows...)
+  - [x] Responsive Breakpoints
+  - [x] a11y compliant
 
 
 <br />

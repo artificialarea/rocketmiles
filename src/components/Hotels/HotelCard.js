@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import defaultImage from '../../img/img_default.png';
 
 export default function HotelCard(props) {
     const { hotel } = props;
@@ -26,15 +25,18 @@ export default function HotelCard(props) {
             input = 
                 <div 
                     className="image"
+                    role="img" aria-label={`photo of ${name}`}
                     style={{ backgroundImage: `url(${mainImage.url})`
                 }}></div>
         } else {
             input = 
                 <div
                     className="image"
-                    style={{ backgroundImage: `url(${defaultImage})`
+                    role="img" aria-label={`no photo available`}
+                    style={{ backgroundImage: `url(${require('../../img/img_default.png')})`
                 }}></div>
         }
+
         return input;
     }
 
@@ -42,13 +44,14 @@ export default function HotelCard(props) {
         <div className="hotel-card" key={hotel.id}>
             <img
                 src={mainImage.url}
+                alt="hotel photo"
                 onError={() => setImgSrc(false)}
                 style={{ display: 'none' }}
             />
             { renderImg() }
             <div className="hotel-details">
                 <div className="hotel-name">
-                    {name}
+                    <h3>{name}</h3>
                 </div>
                 <div className="location">
                     {neighborhoodName}
@@ -69,5 +72,22 @@ export default function HotelCard(props) {
 }
 
 HotelCard.defaultProps = {
-    hotel: {}
+    hotel: {
+        id: '',
+        rewards: {
+            miles: null
+        },
+        lowestAveragePrice: {
+            currency: '',
+            symbol: '',
+            amount: null
+        },
+        hotelStaticContent: {
+            name: '',
+            neighborhoodName: '',
+            mainImage: {
+                url: ''
+            }
+        }
+    }
 }

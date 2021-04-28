@@ -80,7 +80,8 @@ const App = () => {
 
 
     return (
-        <div className="app-container">
+        <main className="app-container">
+            <h1 class="visuallyhidden">Micromiles</h1>
             <div className="content">
                 <Filters 
                     hotelSearch = {hotelSearch}
@@ -94,7 +95,7 @@ const App = () => {
                     error={error}
                 />
             </div>
-        </div>
+        </main>
     )
 }
 
