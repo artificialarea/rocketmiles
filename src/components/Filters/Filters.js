@@ -11,7 +11,7 @@ export default function Filters(props) {
 
     return (
         <div className="filters">
-            <h2 class="visuallyhidden">Filter</h2>
+            <h2 className="visuallyhidden">Filter</h2>
             <label for="name" className="filters-label">Hotel name</label>
             <input 
                 type="text" 

@@ -81,7 +81,7 @@ const App = () => {
 
     return (
         <main className="app-container">
-            <h1 class="visuallyhidden">Micromiles</h1>
+            <h1 className="visuallyhidden">Micromiles</h1>
             <div className="content">
                 <Filters 
                     hotelSearch = {hotelSearch}
