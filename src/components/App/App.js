@@ -56,9 +56,7 @@ const App = () => {
         } else {
             setHotelDisplay(filteredList);
         }
-
-       
-
+        
     }, [hotelSearch, hotelSort]);
 
     const handleSearch = (e) => {

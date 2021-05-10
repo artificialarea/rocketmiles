@@ -12,21 +12,21 @@ export default function Filters(props) {
     return (
         <div className="filters">
             <h2 className="visuallyhidden">Filter</h2>
-            <label for="name" className="filters-label">Hotel name</label>
+            <label htmlFor="name" className="filters-label">Hotel name</label>
             <input 
                 type="text" 
                 id="name"
                 className="input" 
-                tabindex="0"
+                tabIndex="0"
                 value={hotelSearch}
                 onChange={(e) => onSearch(e)}
             />
-            <label for="sort" className="filters-label">Sort</label>
+            <label htmlFor="sort" className="filters-label">Sort</label>
             <select 
                 id="sort"
                 name="sort" 
                 className="select"
-                tabindex="0"
+                tabIndex="0"
                 value={hotelSort} 
                 onChange={(e) => onSort(e)}
             >
@@ -36,7 +36,7 @@ export default function Filters(props) {
             </select>
             <button 
                 className="button"
-                tabindex="0"
+                tabIndex="0"
                 onClick={() => onReset()}
             >
             Reset
